@@ -7,7 +7,7 @@ import IconSnowman from "../assets/icon-snowman.svg";
 
 const fakeUser = {
   username: "Bobby",
-  userPhotoUrl: "https://joinplayroom.com/images/testavatars/1.png",
+  userPhotoUrl: "https://robohash.org/stefan-one",
 };
 
 const gradients = [
@@ -48,7 +48,11 @@ export const UI = () => {
           >
             <img
               className="w-20 h-20 rounded-full border-4 border-white border-opacity-50"
-              src={player.userPhotoUrl}
+              src={
+                player.userPhotoUrl?.includes("testavatars")
+                  ? "https://robohash.org/stefan-one"
+                  : player.userPhotoUrl
+              }
               alt="Player avatar"
             />
             <h2 className="font-bold text-sm text-white truncate max-w-full">

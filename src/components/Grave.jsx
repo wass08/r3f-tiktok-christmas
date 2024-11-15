@@ -11,7 +11,11 @@ import { Explosion } from "./Explosion";
 
 export function Grave({ player, ...props }) {
   const { nodes, materials } = useGLTF("/models/grave.glb");
-  const texture = useTexture(player.userPhotoUrl);
+  const texture = useTexture(
+    player.userPhotoUrl?.includes("testavatars")
+      ? "https://robohash.org/stefan-one"
+      : player.userPhotoUrl
+  ); // Fix crash due to playroom
   const ref = useRef();
   useFrame((_, delta) => {
     ref.current.position.z -= SCROLL_SPEED * delta;
